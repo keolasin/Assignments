@@ -1,4 +1,4 @@
-1. The request cycle
+1. The request/response cycle refers to how a client interfaces with another domain/site. We first send a request (from the client) to the server - the server will then respond with the appropriate data specified by the request. This repeats as the user performs client side actions (requests) and the server replies (responses).
 
 2. Common code groupings are:
   1. 100's: Informational, these response codes are used when a request has been received and understood, and offers info as to the state of the requests (still processing, 102)
@@ -21,5 +21,15 @@ DELETE - this will delete/remove an object on the server
 6. CORS, or Cross-origin resource sharing, allows resources on a specific domain to be accessed/requested from foreign/other sites outside the original domain. One could use CORS for malicious activity, so to avoid that, we use proxies to ensure our requested/response data is not altered, by requesting to the proxy, which then requests to the true target, then sends back to the proxy, then back through to the original requester.
 
 7. ```javascript
-
+fetch(url)
+  .then(response =>{
+    return response.json();
+  })
+  .then(
+    // stuff we want to do with the response data
+  )
+  .catch(error=>{
+    console.log(`An error occurred: ${error}`);
+  });
 ```
+8. See myHackerNews.js
